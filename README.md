@@ -55,6 +55,15 @@ To get started with the DRS system, follow these steps:
   - **Forward (Fast/Slow):** Use the buttons to move forward in the video. ⏩
   - **Give Out/Not Out:** Click these buttons to display the respective decision. ☝️🙅
 
+## Modules and Libraries Used 🧿
+
+   This project utilizes the following Python libraries:
+      - **Tkinter:** For creating the GUI.
+      - **OpenCV (cv2):** For video processing and image handling.
+      - **Pillow (PIL):** For image manipulation and display.
+      - **Imutils:** For additional image processing functions.
+      - **Threading:** For managing concurrent execution during video playback.
+
 ## Code Overview 👀
   The main components of the code include:
   - **Video Playback:** Managed by the `play_video` function, which controls the current frame of the video. 🎥
