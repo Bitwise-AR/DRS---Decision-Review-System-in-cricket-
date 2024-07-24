@@ -2,17 +2,22 @@
 
 Welcome to the DRS (Decision Review System) repository! 🎉 This project implements a graphical user interface (GUI) for reviewing cricket decisions using video playback. Built with Python's Tkinter and OpenCV libraries, this system allows users to play, rewind, and fast-forward video clips of cricket incidents, and display decisions like "Out" or "Not Out". 🎥
 
-
 ## Features 🌟
 
-- **Video Playback:** Play, rewind, and fast-forward cricket video clips. 🎬
-- **Decision Display:** Show pending decisions and final outcomes (Out/Not Out). 🚦
-- **User-Friendly Interface:** Intuitive buttons and layout for easy navigation. 🎨
-- **Threading Support:** Smooth interaction with the GUI during video playback. 🧵
+   - **Video Playback:** Play, rewind, and fast-forward cricket video clips. 🎬
+   - **Decision Display:** Show pending decisions and final outcomes (Out/Not Out). 🚦
+   - **User-Friendly Interface:** Intuitive buttons and layout for easy navigation. 🎨
+   - **Threading Support:** Smooth interaction with the GUI during video playback. 🧵
+
+## Requirements 🔧
+   - Python 3.x
+   - OpenCV
+   - Pillow
+   - imutils
 
 ## Installation 🧑‍💻
 
-To get started with the DRS system, follow these steps:
+   To get started with the DRS system, follow these steps:
 
 1. **Clone the Repository:** 🌳
 
@@ -71,6 +76,7 @@ To get started with the DRS system, follow these steps:
   - **GUI Layout:** Built using Tkinter, with buttons styled for a consistent look and feel. 🎨
 
 ## Key Functions 🔦
+  - **`resize_with_aspect_ratio(image, width=None, height=None, inter=cv2.INTER_AREA)`:** Resizes an image while maintaining its aspect ratio. The function takes parameters for width and height, and it adjusts the dimensions accordingly to preserve the aspect ratio. 📏
   - **`play_video(play_speed)`:** Plays the video at a specified speed. ⏸️
   - **`show_pending(decision)`:** Displays the decision pending image, then shows the sponsor image, and finally the decision outcome. 🏆
   - **`give_out() and give_not_out()`:** Handle the decision-making process and update the GUI accordingly. 👨‍⚖️
