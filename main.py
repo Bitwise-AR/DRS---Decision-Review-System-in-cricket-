@@ -4,10 +4,25 @@ from PIL import Image, ImageTk
 from functools import partial
 import threading
 import time
-import imutils
 
 video_stream = cv2.VideoCapture("clip.mp4")
 toggle_flag = True
+
+def resize_with_aspect_ratio(image, width=None, height=None, inter=cv2.INTER_AREA):
+    dim = None
+    (h, w) = image.shape[:2]
+
+    if width is None and height is None:
+        return image
+
+    if width is None:
+        r = height / float(h)
+        dim = (int(w * r), height)
+    else:
+        r = width / float(w)
+        dim = (width, int(h * r))
+
+    return cv2.resize(image, dim, interpolation=inter)
 
 def play_video(play_speed):
     global toggle_flag
@@ -20,7 +35,7 @@ def play_video(play_speed):
     frame_grabbed, video_frame = video_stream.read()
     if not frame_grabbed:
         exit()
-    video_frame = imutils.resize(video_frame, width=FRAME_WIDTH)
+    video_frame = resize_with_aspect_ratio(video_frame, width=FRAME_WIDTH)
     video_frame = ImageTk.PhotoImage(image=Image.fromarray(video_frame))
     display_canvas.image = video_frame
     display_canvas.create_image(0, 0, image=video_frame, anchor=tk.NW)
@@ -32,9 +47,8 @@ def play_video(play_speed):
 
 def show_pending(decision):
     # 1. Display decision pending image
-    pending_frame = cv2.cvtColor(cv2.imread(
-        "images/decision-pending-cricket.png"), cv2.COLOR_BGR2RGB)
-    pending_frame = imutils.resize(pending_frame, width=FRAME_WIDTH)
+    pending_frame = cv2.cvtColor(cv2.imread("images/decision-pending-cricket.png"), cv2.COLOR_BGR2RGB)
+    pending_frame = resize_with_aspect_ratio(pending_frame, width=FRAME_WIDTH)
     pending_frame = ImageTk.PhotoImage(image=Image.fromarray(pending_frame))
     display_canvas.image = pending_frame
     display_canvas.create_image(0, 0, image=pending_frame, anchor=tk.NW)
@@ -43,7 +57,7 @@ def show_pending(decision):
 
     # 3. Display sponsor image
     sponsor_frame = cv2.cvtColor(cv2.imread("images/icc.png"), cv2.COLOR_BGR2RGB)
-    sponsor_frame = imutils.resize(sponsor_frame, width=FRAME_WIDTH)
+    sponsor_frame = resize_with_aspect_ratio(sponsor_frame, width=FRAME_WIDTH)
     sponsor_frame = ImageTk.PhotoImage(image=Image.fromarray(sponsor_frame))
     display_canvas.image = sponsor_frame
     display_canvas.create_image(0, 0, image=sponsor_frame, anchor=tk.NW)
@@ -55,9 +69,8 @@ def show_pending(decision):
         decision_image = "images/out.png"
     else:
         decision_image = "images/not_out.png"
-    decision_frame = cv2.cvtColor(
-        cv2.imread(decision_image), cv2.COLOR_BGR2RGB)
-    decision_frame = imutils.resize(decision_frame, width=FRAME_WIDTH)
+    decision_frame = cv2.cvtColor(cv2.imread(decision_image), cv2.COLOR_BGR2RGB)
+    decision_frame = resize_with_aspect_ratio(decision_frame, width=FRAME_WIDTH)
     decision_frame = ImageTk.PhotoImage(image=Image.fromarray(decision_frame))
     display_canvas.image = decision_frame
     display_canvas.create_image(0, 0, image=decision_frame, anchor=tk.NW)
@@ -140,8 +153,8 @@ btn_rewind_slow.grid(row=1, column=1, sticky='ew')
 btn_rewind_slow.bind("<Enter>", on_enter)
 btn_rewind_slow.bind("<Leave>", on_leave)
 
-btn_forward_slow = tk.Button(
-    main_window, text="Forward (slow) >>", command=partial(play_video, 2), **button_style)
+btn_forward_slow = tk.Button(main_window, text="Forward (slow) >>", command=partial(
+    play_video, 2), **button_style)
 btn_forward_slow.grid(row=1, column=2, sticky='ew')
 btn_forward_slow.bind("<Enter>", on_enter)
 btn_forward_slow.bind("<Leave>", on_leave)
