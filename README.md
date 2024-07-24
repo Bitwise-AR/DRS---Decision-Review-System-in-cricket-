@@ -82,7 +82,15 @@ Welcome to the DRS (Decision Review System) repository! 🎉 This project implem
   - **`give_out() and give_not_out()`:** Handle the decision-making process and update the GUI accordingly. 👨‍⚖️
 
 ## Contributing 🤝
-  Contributions are welcome! If you have suggestions for improvements or new features, feel free to fork the repository and submit a pull request. 🤝
+  Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+   If you have a suggestion that would make this project better, please fork the repository and create a pull request. You can also simply open an issue with the tag    "enhancement".
+
+   - **Fork the Project**
+   - **Create your Feature Branch (`git checkout -b feature/AmazingFeature`)**
+   - **Commit your Changes (`git commit -m 'Add some AmazingFeature'`)**
+   - **Push to the Branch (`git push origin feature/AmazingFeature`)**
+   - **Open a Pull Request**
 
 ## License 📜
   This project is open-source and available under the [MIT License](LICENSE)
