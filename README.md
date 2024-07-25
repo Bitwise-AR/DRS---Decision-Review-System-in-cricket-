@@ -22,8 +22,8 @@ Welcome to the DRS (Decision Review System) repository! 🎉 This project implem
 1. **Clone the Repository:** 🌳
 
    ```bash
-   git clone https://github.com/yourusername/drs-decision-review-system.git
-   cd drs-decision-review-system
+   git clone git@github.com:Bitwise-AR/DRS_System_In_Cricket.git
+   cd DRS_System_In_Cricket
 
 2. **Install Required Libraries:** 📚
 
